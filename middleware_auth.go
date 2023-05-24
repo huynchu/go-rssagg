@@ -18,7 +18,6 @@ func (apiCfg *apiConfig) middlewareAuth(handler authedHandler) http.HandlerFunc 
 			return
 		}
 		
-		fmt.Printf("API_KEY: %v", apiKey)
 		user, err := apiCfg.DB.GetUserByAPIKey(r.Context(), apiKey)	
 		if err != nil {
 			respondWithError(w, 400, fmt.Sprintf("Couldn't get error: %v", err))
